@@ -35,7 +35,7 @@ export default{
 	methods:{
 		getDetailInfo () {
 			// 发送axios请求，请求地址在括号里,加入动态路由请求
-			axios.get('http://10.130.228.140:3000/detail.json?id='+this.$route.params.id)
+			axios.get('http://10.207.125.34:3000/detail.json?id='+this.$route.params.id)
 			// 两种写法作用一致
 			// axios.get('/static/mock/detail.json',{
 			// 	params:{

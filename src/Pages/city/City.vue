@@ -32,7 +32,7 @@ export default{
 	methods:{
 		getCityInfo () {
 			// 发送axios请求，请求地址在括号里
-			axios.get('http://10.130.228.140:3000/city.json')
+			axios.get('http://10.207.125.34:3000/city.json')
 				.then(this.handleGetCityInfoSucc)
 		},
 		handleGetCityInfoSucc (res) {
