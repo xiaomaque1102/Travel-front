@@ -1,5 +1,5 @@
 <template>
-	<div class="icons">
+	<div class="icons" :options="swiperOption">
 		<swiper>
 			<!-- 循环展示每页 -->
 			<swiper-slide v-for="(page,index) of pages" :key='index'>
@@ -19,6 +19,13 @@
 <script >
 export default{
 	name: 'HomeIcons',
+	data(){
+		return{
+			// 返回swiper绑定的数据
+			swiperOption:{
+			},
+		}
+	},
 	props:{
 		iconList: Array
 	},

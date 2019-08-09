@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- keep-alive让路由的内容在被加载过之后防止内存中，下次访问不需要重新加载渲染，不再动钩子 -->
-    <!-- 想要不缓存某个组件就写在exclude里,和activated作用一样 -->
+    <!-- 想要不缓存某个组件就把组件名写在exclude里,和activated作用一样 -->
     <keep-alive exclude=' '>
       <router-view/>
     </keep-alive> 

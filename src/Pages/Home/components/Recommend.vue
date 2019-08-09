@@ -10,6 +10,7 @@
 				:key="item.id"
 				:to="'/detail/'+item.id" 
 			>
+				<!-- 在循环中使用src要用：绑定 -->
 				<img class="item-img" :src="item.imgUrl"/>
 				<div class="item-info">
 					<p class="item-title">{{item.title}}</p>

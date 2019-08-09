@@ -1,4 +1,4 @@
- <template>
+<template>
 	<div class="list" ref="wrapper">
 		<div>
 			<div class="area">
