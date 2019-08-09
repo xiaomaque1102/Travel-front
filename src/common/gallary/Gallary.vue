@@ -5,14 +5,10 @@
 				<swiper-slide v-for="(item,index) in imgs" :key='index' >
 	          		<img class='gallary-img'  :src='item'/>
 	        	</swiper-slide>
-<!-- 				<swiper-slide >
-	          		<img class='gallary-img' src="https://imgs.qunarzz.com/vs_ceph_vs_tts/82bdf11a-3e92-4d4b-93bc-778308fee40b.jpg_r_390x260x90_2f1f7e00.jpg"/>
-	        	</swiper-slide> -->
-        	<div class="swiper-pagination"  slot="pagination"></div>
+        		<div class="swiper-pagination" slot="pagination"></div>
         	</swiper>
 		</div>
 	</div>
-
 </template>
 
 <script>
@@ -24,14 +20,16 @@ export default {
 			default(){
 				return ["http://imgs.qunarzz.com/vs_ceph_vs_tts/aae8d136-9fb1-4c15-8932-346a47f53661.jpg_r_390x260x90_e0b356ee.jpg","https://imgs.qunarzz.com/vs_ceph_vs_tts/82bdf11a-3e92-4d4b-93bc-778308fee40b.jpg_r_390x260x90_2f1f7e00.jpg"]
 			}
-
 		}
 	},
 	data(){
 	    return{
 	    	swiperOption:{
-		    	pagination: '.swiper-pagination',
-		    	paginationType:'fraction',
+				//指定分页器格式		
+		    	pagination: {
+            		el: '.swiper-pagination',
+            		type: 'fraction',
+          		},
 		        // 使最后一页和第一页可以循环
 		    	loop: true,
 		    	observeParents: true,
@@ -49,7 +47,7 @@ export default {
 </script>
 
 <style scoped="">
-	.wrapper>>>.swiper-container{
+	.container >>> .swiper-container{
 		/*hidden 内容会被修剪，并且其余内容是不可见的。*/
 		/*inherit 规定应该从父元素继承 overflow 属性的值。*/
 		overflow: inherit;
