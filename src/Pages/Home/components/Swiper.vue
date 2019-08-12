@@ -45,7 +45,7 @@ export default{
   }
   .swiper-img{
       /*完全显示图片*/
-      width:100%;
+    width:100%;
   }
   .wrapper{
     /*防止抖动*/

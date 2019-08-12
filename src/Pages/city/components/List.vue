@@ -1,6 +1,6 @@
 <template>
 	<div class="list" ref="wrapper">
-		<div>
+		<div class="sublist">
 			<div class="area">
 				<div class="title border-topbottom" >当前位置</div>
 				<div class="button-list">
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import Bscroll from '@better-scroll/core'
+import BScroll from '@better-scroll/core'
 import { mapState, mapMutations } from 'vuex'
 export default{
 	name:'CityList',
@@ -47,6 +47,19 @@ export default{
 		letter: String,
 	},
 	methods:{
+		init() {
+			this.bs = new BScroll(this.$refs.wrapper, {
+				scrollY: true,
+				click: true,
+				probeType: 3 // listening scroll hook
+			})
+			this._registerHooks(['scroll', 'scrollEnd'], (pos) => {
+				// console.log('done')
+			})
+		},
+		_registerHooks(hookNames, handler) {
+			hookNames.forEach((name) => {this.bs.on(name, handler)})
+		},
 		...mapMutations(['changeCity']),
 		handleCityClick(city){
 			// 可以省略action步骤，直接由commit调用mutation
@@ -71,23 +84,24 @@ export default{
 			if(this.letter){
 				// 加0是因为elemen&&t是数组，scrollToElement参数必须是DOM元素
 				const element = this.$refs[this.letter][0]
-				this.scroll.scrollToElement(element)
+				// this.scroll.scrollToElement(element)
+				this.bs.scrollToElement(element)
 				// console.log(element)
 			}
 		}
 	},
 	mounted () {
+		this.init()
 		// this.scroll= new Bscroll(this.$refs.wrapper)
-		this.scroll= new Bscroll(this.$refs.wrapper,{
-			// disableWeel:false,
-			// wheel: true,
-			// snap: true 
-
-		})
+		// this.scroll= new Bscroll(this.$refs.wrapper,{
+		// })
 		// setTimeout(()=>{
 		// 	this.scroll= new Bscroll(this.$refs.wrapper);
 		// },20)
 	},
+	beforeDestroy() {
+      this.bs.destroy()
+    },
 }
 </script>
 
@@ -100,6 +114,9 @@ export default{
 		right: 0;
 		bottom:0;
 		/*background: red;*/
+	}
+	.sublist{
+		height: 40000px;
 	}
 	/*修改border-topbottom类的两个伪元素设置*/
 	.border-topbottom:before{
