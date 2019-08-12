@@ -1,6 +1,6 @@
 <template>
 	<div class="list" ref="wrapper">
-		<div class="sublist">
+		<div>
 			<div class="area">
 				<div class="title border-topbottom" >当前位置</div>
 				<div class="button-list">
@@ -88,19 +88,36 @@ export default{
 				this.bs.scrollToElement(element)
 				// console.log(element)
 			}
+		},
+		city (){
+			if (JSON.stringify(data) !== '{}') {
+				this.bs.refresh()
+				console.log("aaa")
+			}
+
 		}
 	},
 	mounted () {
 		this.init()
+		// this.$nextTick(function(){
+		// 	this.init()
+		// })
 		// this.scroll= new Bscroll(this.$refs.wrapper)
 		// this.scroll= new Bscroll(this.$refs.wrapper,{
 		// })
 		// setTimeout(()=>{
-		// 	this.scroll= new Bscroll(this.$refs.wrapper);
-		// },20)
+		// 	this.init()
+		// },2000)
 	},
+	// 当data中定义的数据有变化时就会加载updated方法
+	updated () {
+		// this.bs.refresh()
+	},
+	// activated(){
+	// 	this.bs.refresh()
+	// },
 	beforeDestroy() {
-      this.bs.destroy()
+    	this.bs.destroy()
     },
 }
 </script>
@@ -114,9 +131,6 @@ export default{
 		right: 0;
 		bottom:0;
 		/*background: red;*/
-	}
-	.sublist{
-		height: 40000px;
 	}
 	/*修改border-topbottom类的两个伪元素设置*/
 	.border-topbottom:before{

@@ -30,10 +30,22 @@ export default{
 		}
 	},
 	methods:{
-		getCityInfo () {
+		async getCityInfo () {
 			// 发送axios请求，请求地址在括号里
-			axios.get('http://10.207.125.34:3000/city.json')
+			await axios.get('http://10.207.125.34:3000/city.json')
 				.then(this.handleGetCityInfoSucc)
+			// $.ajax({
+			// 		url : 'http://10.207.125.34:3000/city.json',
+			// 		type : 'get',
+			// 		async: false,//使用同步的方式,true为异步方式
+			// 		// data : {'act':'addvideo', 'videoname':videoname},//这里使用json对象
+			// 		success : function(data){
+			// 			this.handleGetCityInfoSucc(data);
+			// 		},
+			// 		fail:function(){
+			// 		//code here...
+			// 		}
+			// 		});
 		},
 		handleGetCityInfoSucc (res) {
 			// console.log(res)
