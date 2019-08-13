@@ -78,7 +78,6 @@ export default{
 		},
 	},
 	mounted () {
-		// while (Object.keys(this.cities).length===0){}
 		this.bs = new BScroll(this.$refs.wrapper)
 		// console.log("mounte")
 		// console.log(this.bs)
@@ -86,7 +85,6 @@ export default{
 	// 当data中定义的数据有变化时就会加载updated方法
 	updated () {
 		this.bs.refresh()
-		// this.bs.enable()
 		// console.log("updated")
 		// console.log(this.bs)
 	},

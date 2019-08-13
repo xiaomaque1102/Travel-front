@@ -84,6 +84,7 @@ export default{
 	},
 	activated(){
 		this.scroll.refresh()
+		this.keyword=""
 	}
 }
 
