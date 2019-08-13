@@ -47,19 +47,6 @@ export default{
 		letter: String,
 	},
 	methods:{
-		init() {
-			this.bs = new BScroll(this.$refs.wrapper, {
-				scrollY: true,
-				click: true,
-				probeType: 3 // listening scroll hook
-			})
-			this._registerHooks(['scroll', 'scrollEnd'], (pos) => {
-				// console.log('done')
-			})
-		},
-		_registerHooks(hookNames, handler) {
-			hookNames.forEach((name) => {this.bs.on(name, handler)})
-		},
 		...mapMutations(['changeCity']),
 		handleCityClick(city){
 			// 可以省略action步骤，直接由commit调用mutation
@@ -89,33 +76,25 @@ export default{
 				// console.log(element)
 			}
 		},
-		city (){
-			if (JSON.stringify(data) !== '{}') {
-				this.bs.refresh()
-				console.log("aaa")
-			}
-
-		}
 	},
 	mounted () {
-		this.init()
-		// this.$nextTick(function(){
-		// 	this.init()
-		// })
-		// this.scroll= new Bscroll(this.$refs.wrapper)
-		// this.scroll= new Bscroll(this.$refs.wrapper,{
-		// })
-		// setTimeout(()=>{
-		// 	this.init()
-		// },2000)
+		// while (Object.keys(this.cities).length===0){}
+		this.bs = new BScroll(this.$refs.wrapper)
+		// console.log("mounte")
+		// console.log(this.bs)
 	},
 	// 当data中定义的数据有变化时就会加载updated方法
 	updated () {
-		// this.bs.refresh()
+		this.bs.refresh()
+		// this.bs.enable()
+		// console.log("updated")
+		// console.log(this.bs)
 	},
-	// activated(){
-	// 	this.bs.refresh()
-	// },
+	activated(){
+		this.bs.refresh()
+		// console.log("activated")
+		// console.log(this.bs)
+	},
 	beforeDestroy() {
     	this.bs.destroy()
     },

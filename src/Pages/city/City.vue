@@ -30,9 +30,9 @@ export default{
 		}
 	},
 	methods:{
-		async getCityInfo () {
+		getCityInfo () {
 			// 发送axios请求，请求地址在括号里
-			await axios.get('http://10.207.125.34:3000/city.json')
+			axios.get('http://10.207.125.34:3000/city.json')
 				.then(this.handleGetCityInfoSucc)
 			// $.ajax({
 			// 		url : 'http://10.207.125.34:3000/city.json',
