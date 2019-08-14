@@ -13,7 +13,7 @@ import 'styles/border.css'//解决1像素边框问题
 import fastClick from 'fastClick' //解决某些机型300ms延迟的点击问题
 // 引入iconfont
 import 'styles/iconfont.css' //使用icon
-import $ from 'jquery'
+// import $ from 'jquery'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)  //对fastClick方法进行绑定
